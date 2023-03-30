@@ -1,0 +1,23 @@
+:root {
+    --offset: 8px;
+    --double-offset: 16px;
+    --background-color: #fff;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.Calendar {
+    position: absolute;
+    left: var(--offset);
+    border: 2px solid #000;
+    border-radius: var(--offset);
+    box-shadow: 5px 5px 20px -5px #000;
+    min-width: 600px;
+    background-color: var(--background-color);
+}
+
+.Calendar__wrapper {
+    padding: var(--double-offset);
+}
