@@ -1,6 +1,7 @@
 :root {
     --offset: 8px;
     --double-offset: 16px;
+    --background-color: #fff;
 }
 
 * {
@@ -9,12 +10,12 @@
 
 .Calendar {
     position: absolute;
-    bottom: calc(-100% - 20px);
     left: var(--offset);
     border: 2px solid #000;
     border-radius: var(--offset);
     box-shadow: 5px 5px 20px -5px #000;
     min-width: 600px;
+    background-color: var(--background-color);
 }
 
 .Calendar__wrapper {

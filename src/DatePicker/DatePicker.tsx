@@ -3,6 +3,7 @@
   import { InputField, Calendar } from './components';
   import styles from './DatePicker.module.css';
 
+  
   export const DatePicker: React.FC<DatePickerProps> = ({date = new Date(), onChange =() => {}}) => {
 
     const [isOPenCalendar, setIsOpenCalendar] = useState<boolean>(true)
@@ -16,6 +17,7 @@
             />
             <Calendar 
                 open={isOPenCalendar}
+                date={date}
                 onChangeWeekNext={()=>{}}
                 onChangeWeekPrev={()=>{}}
                 onChangeYearNext={()=>{}}

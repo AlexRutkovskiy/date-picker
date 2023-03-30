@@ -1,0 +1,26 @@
+
+.CalendarHeader__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.CalendarHeaader__manage__block {
+    display: flex;
+    align-items: center;
+}
+
+.CalendarHeaader__manage__block button {
+    border: none;
+    background-color: inherit;
+    cursor: pointer;
+}
+
+.CalendarHeaader__manage__block button:hover {
+    background-color: #eee;
+}
+
+.CalendarHeaader__title h1 {
+    margin: unset;
+    font-size: 1.5rem;
+}
