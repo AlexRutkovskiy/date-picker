@@ -6,8 +6,8 @@ import { CalendarHeader, CalendarBody } from './components';
 export const Calendar: React.FC<CalendarProps> = ({
     open, 
     date,
-    onChangeWeekNext, 
-    onChangeWeekPrev, 
+    onChangeMonthNext, 
+    onChangeMonthPrev, 
     onChangeYearNext, 
     onChangeYearPrev, 
     onSelected
@@ -22,8 +22,8 @@ export const Calendar: React.FC<CalendarProps> = ({
             <div className={styles.Calendar__wrapper}>
                 <CalendarHeader 
                     date={date}
-                    onChangeWeekNext={onChangeWeekNext}
-                    onChangeWeekPrev={onChangeWeekPrev}
+                    onChangeMonthNext={onChangeMonthNext}
+                    onChangeMonthPrev={onChangeMonthPrev}
                     onChangeYearNext={onChangeYearNext}
                     onChangeYearPrev={onChangeYearPrev}
                 />

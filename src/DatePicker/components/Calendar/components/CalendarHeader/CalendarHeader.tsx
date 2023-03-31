@@ -10,8 +10,8 @@ import { getFullYear, getDayString, getMonthString } from '../../../../utils';
 
 export const CalendarHeader: React.FC<CalendarHeaderProps> = ({
     date,
-    onChangeWeekNext,
-    onChangeWeekPrev,
+    onChangeMonthNext,
+    onChangeMonthPrev,
     onChangeYearNext,
     onChangeYearPrev
 }) => {
@@ -20,7 +20,7 @@ export const CalendarHeader: React.FC<CalendarHeaderProps> = ({
             <div className={styles.CalendarHeader__wrapper}>
                 <div className={styles.CalendarHeaader__manage__block}>
                     <button onClick={onChangeYearPrev}><IconPrevYear /></button>
-                    <button onClick={onChangeWeekPrev}><IconPrevWeek /></button>
+                    <button onClick={onChangeMonthPrev}><IconPrevWeek /></button>
                 </div>
                 <div className={styles.CalendarHeaader__title}>
                     <h1>
@@ -30,7 +30,7 @@ export const CalendarHeader: React.FC<CalendarHeaderProps> = ({
                     </h1>
                 </div>
                 <div className={styles.CalendarHeaader__manage__block}>
-                    <button onClick={onChangeWeekNext}><IconNextWeek /></button>
+                    <button onClick={onChangeMonthNext}><IconNextWeek /></button>
                     <button onClick={onChangeYearNext}><IconNextYear /></button>
                 </div>
             </div>
