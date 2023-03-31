@@ -13,8 +13,8 @@ interface IDate {
 }
 
 export interface CalendarHeaderProps extends IDate {    
-    onChangeWeekNext: () => void;
-    onChangeWeekPrev: () => void;
+    onChangeMonthNext: () => void;
+    onChangeMonthPrev: () => void;
     onChangeYearNext: () => void;
     onChangeYearPrev: () => void;
 }
@@ -25,4 +25,13 @@ export interface CalendarBodyProps extends IDate {
 
 export interface CalendarProps extends CalendarHeaderProps, CalendarBodyProps {
     open: boolean;
+}
+
+export interface DateObj {
+    day: number;
+    dayWeek: number;
+    month: number;
+    year: number;
+    isCurrent: boolean;
+    isCurrentMonth: boolean;
 }
