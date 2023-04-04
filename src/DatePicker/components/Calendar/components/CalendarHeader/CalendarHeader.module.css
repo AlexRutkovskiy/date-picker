@@ -23,4 +23,6 @@
 .CalendarHeaader__title h1 {
     margin: unset;
     font-size: 1.5rem;
+    min-width: 190px;
+    text-align: center;
 }

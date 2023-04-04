@@ -4,9 +4,9 @@ const MAX_CEIL = 42;
 
 export const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
-export const dayOfWeek = ['Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat', 'Sun'];
+export const dayOfWeek = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat'];
 
-export const dayOfWeekShort = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
+export const dayOfWeekShort = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
 
 export const getFullYear = (date: Date) => date.getFullYear();
 
@@ -16,13 +16,16 @@ export const getDate = (date: Date) => date.getDate();
 
 export const getDay = (date: Date) => date.getDay();
 
+const addZero = (data: number): string => {
+    return (data > 9) ? String(data) : "0" + data;
+}
 
 export const getFormatDate = (date: Date) => {
-    return `${getFullYear(date)}-${getMonth(date)}-${getDate(date)}`;
+    return `${getFullYear(date)}-${addZero(getMonth(date))}-${addZero(getDate(date))}`;
 }
 
 export const getDayString = (date: Date): string => {
-    const day = date.getDay() - 1;
+    const day = date.getDay();
     return dayOfWeek[day];
 }
 
@@ -35,34 +38,36 @@ export const getDaysInMonth = (date: Date) => {
     return new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
 }
 
-export const isToday = (someDate: Date) => {
-    const today = new Date()
+export const isToday = (someDate: Date, today: Date): boolean => {
     return someDate.getDate() === today.getDate() &&
         someDate.getMonth() === today.getMonth() &&
         someDate.getFullYear() === today.getFullYear()
 }
 
-export const getMounthDayObj = (date: Date): (null | DateObj)[] => {
+export const isCurrentMonth = (someDate: Date): boolean => {
+    const today = new Date()
+    return someDate.getMonth() === today.getMonth() && someDate.getFullYear() === today.getFullYear()
+}
+
+export const getMounthDayObj = (date: Date, selectedDate: Date): (null | DateObj)[] => {
     const res = [];
     const days = getDaysInMonth(date);
-    const firstDayMonthIndex = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDay();
-    const prevWeekDays = 6 - firstDayMonthIndex;
+    const numberFirstDayinMonth = (new Date(date.getFullYear(), date.getMonth(), 0)).getDay() + 1
 
     for (let i = 0; i < MAX_CEIL; i++) {
-        if (i > prevWeekDays && i <= (prevWeekDays + days)) {
+        if (i >= numberFirstDayinMonth && i < numberFirstDayinMonth + days) {
             res.push({
-                day: i - prevWeekDays,
-                dayWeek: new Date(date.getFullYear(), date.getMonth(), i).getDay(),
-                month: getMonth(date),
-                year: date.getFullYear(),
-                isCurrent: isToday(new Date(date.getFullYear(), date.getMonth(), i - prevWeekDays)),
-                isCurrentMonth: true
-            } as DateObj)
+                day: i - numberFirstDayinMonth + 1,
+                dayWeek: new Date(date.getFullYear(), date.getMonth(), i - numberFirstDayinMonth + 1).getDay(),
+                isCurrent: isToday(new Date(date.getFullYear(), date.getMonth(), i - numberFirstDayinMonth + 1), selectedDate),
+                isCurrentMonth: isCurrentMonth(new Date(date.getFullYear(), date.getMonth(), i - numberFirstDayinMonth + 1)),
+                month: date.getMonth(),
+                year: date.getFullYear()
+            } as DateObj);
             continue;
         }
 
         res.push(null)
     }
-
     return res;
 }

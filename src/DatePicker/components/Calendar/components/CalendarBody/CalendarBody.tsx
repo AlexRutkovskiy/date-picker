@@ -3,8 +3,16 @@ import styles from './CalendarBody.module.css';
 import { CalendarBodyProps, DateObj } from '../../../../types'
 import { dayOfWeekShort, getMounthDayObj } from '../../../../utils';
 
+interface ICalendarProps extends CalendarBodyProps {
+    selectedDate: Date;
+}
 
-export const CalendarBody: React.FC<CalendarBodyProps> = ({ date, onSelected }) => {
+export const CalendarBody: React.FC<ICalendarProps> = ({ date, selectedDate, onSelected }) => {
+
+    const handleClick = (item: DateObj) => {
+        const date = new Date(item.year, item.month, item.day);
+        onSelected(date);
+    }
 
     const renderWeekNames = () => {
         const res: JSX.Element[] = [];
@@ -15,32 +23,25 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({ date, onSelected }) 
         return res;    
     }
 
-    const renderMonthDays = () => {
-        const res: JSX.Element[] = [];
-        const data: (null | DateObj)[] = getMounthDayObj(date);
-
-
-        for (let i = 0; i < data.length; i++) {
-            const item = data[i];
+    const renderMonthDays = (): JSX.Element[] => {
+        const data: (null | DateObj)[] = getMounthDayObj(date, selectedDate);
+        return data.map((item, index) => {
+            const key = (item !== null) ? `key_${item.day}_${item.month}_${item.year}` : `key_${index}`;
             if (item !== null) {
-                const key = `key_${item.day}_${item.month}_${item.year}`;
-                res.push(
-                    <div key={key} className={styles.CalendarBody__row__date} >
+                return (
+                    <div key={key} className={styles.CalendarBody__row__date} onClick={() =>handleClick(item)}>
                         <span>{item.day}</span>
                         { item.isCurrent && <span className={styles.CalendarBody__row__date_current}></span> }
                     </div>
-                )
-            } else {
-                const key = `key_${i}`;
-                res.push(
-                    <div key={key} className={styles.CalendarBody__row__date} >
-                        <span className={styles.vis__hidden}>{i}</span>
-                    </div>
-                )
+                );
             }
-        }
 
-        return res;
+            return (
+                <div key={key} className={styles.CalendarBody__row__date_empty} >
+                    <span className={styles.vis__hidden}>{index}</span>
+                </div>
+            );
+        })
     }
 
     return (

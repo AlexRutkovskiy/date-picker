@@ -2,6 +2,7 @@
     --offset: 8px;
     --double-offset: 16px;
     --background-color: #fff;
+    --primary-color: #000;
 }
 
 * {
@@ -11,13 +12,23 @@
 .Calendar {
     position: absolute;
     left: var(--offset);
-    border: 2px solid #000;
+    border: 2px solid var(--primary-color);
     border-radius: var(--offset);
-    box-shadow: 5px 5px 20px -5px #000;
-    min-width: 600px;
+    box-shadow: 5px 5px 20px -5px var(--primary-color);
     background-color: var(--background-color);
 }
 
 .Calendar__wrapper {
     padding: var(--double-offset);
+}
+
+.Calendar__btn_offset {
+    margin-top: 10px;
+}
+
+.Calendar__btn {
+    width: 100%;
+    padding: 10px;
+    text-transform: uppercase;
+    cursor: pointer;   
 }

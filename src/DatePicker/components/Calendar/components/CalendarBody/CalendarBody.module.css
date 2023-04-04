@@ -16,17 +16,18 @@
     justify-content: center;
 }
 
-.CalendarBody__row__date {
+.CalendarBody__row__date,
+.CalendarBody__row__date_empty {
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 15px;
-    cursor: pointer;
     position:relative;
 }
 
 .CalendarBody__row__date:hover {
     background-color: rgba(0, 0, 0, .2);
+    cursor: pointer;
 }
 
 .CalendarBody__row__date_current {
