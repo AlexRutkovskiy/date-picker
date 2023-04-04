@@ -20,10 +20,10 @@ export interface CalendarHeaderProps extends IDate {
 }
 
 export interface CalendarBodyProps extends IDate {
-    onSelected: () => void;
+    onSelected: (date: Date) => void;
 }
 
-export interface CalendarProps extends CalendarHeaderProps, CalendarBodyProps {
+export interface CalendarProps extends CalendarBodyProps {
     open: boolean;
 }
 
