@@ -1,8 +1,8 @@
 import React from "react";
-import { CalendarProps } from "../../types"
+import { CalendarProps } from "@/types";
 import styles from './Calendar.module.css';
-
 import { CalendarHeader, CalendarBody } from './components';
+
 
 export const Calendar: React.FC<CalendarProps> = ({open, date, onSelected}) => {
 

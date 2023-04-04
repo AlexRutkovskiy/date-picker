@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './CalendarBody.module.css';
-import { CalendarBodyProps, DateObj } from '../../../../types'
-import { dayOfWeekShort, getMounthDayObj } from '../../../../utils';
+import { CalendarBodyProps, DateObj } from '@/types'
+import { dayOfWeekShort, getMounthDayObj } from '@/utils';
 
 interface ICalendarProps extends CalendarBodyProps {
     selectedDate: Date;

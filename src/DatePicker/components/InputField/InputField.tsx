@@ -1,12 +1,9 @@
-import { InputFieldProps } from '../../types';
-import { getFormatDate } from '../../utils';
-import { ReactComponent as Icon } from '../../assets/icons/icon-date-picker.svg'
+import { InputFieldProps } from '@/types';
+import { getFormatDate } from '@/utils';
+import { ReactComponent as Icon } from '@/assets/icons/icon-date-picker.svg';
 import styles from './InputField.module.css';
 
 export const InputField: React.FC<InputFieldProps> = ({date, action}) => {
-    
-    const handleClick = () => action();
-    
     return (
         <div className={styles.InputField}>
             <input 

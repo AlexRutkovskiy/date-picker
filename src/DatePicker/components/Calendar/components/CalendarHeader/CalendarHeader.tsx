@@ -1,11 +1,11 @@
 import React from 'react';
-import { CalendarHeaderProps } from '../../../../types'
+import { CalendarHeaderProps } from '@/types'
 import styles from './CalendarHeader.module.css';
-import { ReactComponent as IconPrevYear } from '../../../../assets/icons/chevron-left-duo.svg';
-import { ReactComponent as IconNextYear } from '../../../../assets/icons/chevron-right-duo.svg';
-import { ReactComponent as IconPrevWeek } from '../../../../assets/icons/chevron-left.svg';
-import { ReactComponent as IconNextWeek } from '../../../../assets/icons/chevron-right.svg';
-import { getFullYear, getDayString, getMonthString } from '../../../../utils';
+import { ReactComponent as IconPrevYear } from '@/assets/icons/chevron-left-duo.svg';
+import { ReactComponent as IconNextYear } from '@/assets/icons/chevron-right-duo.svg';
+import { ReactComponent as IconPrevWeek } from '@/assets/icons/chevron-left.svg';
+import { ReactComponent as IconNextWeek } from '@/assets/icons/chevron-right.svg';
+import { getFullYear, getDayString, getMonthString } from '@/utils';
 
 
 export const CalendarHeader: React.FC<CalendarHeaderProps> = ({
